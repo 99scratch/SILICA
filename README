@@ -1,0 +1,20 @@
+=======Requirements========
+lazarus >= 0.9.26
+gcc >= 4.5.2
+linux >=2.6.26
+=======Compile & Install==========
+open the terminal, type
+	make
+to compile. 
+when the compilation is successfully done, type
+	sudo make install
+to install SILICA to your macine.
+type
+	sudo make remove
+to remove SILICA from your machine.
+
+
+for more information, check the documentation in the 'doc' directory.
+
+if you have any question, please contact yanchengyuan@gmail.com
+
