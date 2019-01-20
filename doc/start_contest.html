@@ -1,0 +1,323 @@
+<html>
+<head>
+   <title>SILICA - Start a Contest</title>
+</head>
+<body>
+<!-- Head -->
+    <h1>Start a Contest</h1>
+    <hr />
+<!-- Navigation -->
+    <a href="index.html">Top</a>&nbsp;&nbsp;
+    <a href="preparation.html">Previous</a>:Prepare for Contests&nbsp;&nbsp;
+    <a href="known_issues.html">Next</a>:Known Issues&nbsp;&nbsp;
+    <hr />
+
+<!-- Create or Open a Contest -->
+    <h3><a name="3.1">Create or Open a Contest</a></h3>
+    <p>
+        Click "File"-&gt;"New or Open" in the main menu, or hit "Ctrl+O" to open the "New or Open" dialog where you can create new tests or open an existing one. The dialog may seem like this:
+    </p>
+    <img src="img/NOForm.png" align="middle" height="350" width="400"/>
+    <p>
+        You can create a new test in the "New" page, or open an existing one in the "Recent" and "Specified" pages.
+    </p>
+    <h4>New</h4>
+    <p>
+        In this page, you can create new tests. <br />
+    </p>
+    <img src="img/NOForm_New.png" align="middle" height="350" width="400"/>
+    <p>
+        The <b>meanings</b> are listed as follows:
+    </p>
+    <dl>
+        <dt>Contest Title</dt>
+        <dd>
+            The title for the new contest. It is "test on $(date)" by default, where $(date) is the current date string in the format "HHHH-MM-DD". <br />
+            <strong>NOTE</strong>: this should not be left blank.
+        </dd>
+
+        <dt>Save In</dt>
+        <dd>
+            The path of the folder where the files will be stored. It is "$(folder)$(title)" by default, where $(folder) is the "Default Test Directory" in the "Options" dialog, and $(title) is the text filled in the "Contest Title" field. <br />
+            <strong>NOTE</strong>: this should not be left blank.
+        </dd>
+    </dl>
+    <h4>Recent</h4>
+    <p>
+        This is the default page. In this page, you can open a contest you recently closed. <br />
+    </p>
+    <img src="img/NOForm.png" align="middle" height="350" width="400"/>
+    <p>
+        The <b>meanings</b> are listed as follows:
+    </p>
+    <dl>
+        <dt>Contests</dt>
+        <dd>
+            A list of the contests you recently closed. When an item is highlighted, its information will be shown in the right part.<br />
+            You can reload the list by clicking "Refresh" in the pop-up menu.
+            You can delete an entry by highlighting it and clicking "Delete" in the pop-up menu.
+        </dd>
+
+        <dt>Folder</dt>
+        <dd>
+            The path of the folder where the files for this test are stored.
+        </dd>
+        <dt>Problems</dt>
+        <dd>
+            An overview of the problems in this contest. <br />
+            The information is given in the format "$(title)($(source));", where ${title} is the problem title, and $(source) is the text filled in the "Source File" field of the data configuration.
+        </dd>
+    </dl>
+    <h4>Specified</h4>
+    <p>
+        In this page, you can open a contest by selecting the folder where it is stored. <br />
+    </p>
+    <img src="img/NOForm_Spec.png" align="middle" height="350" width="400"/>
+    <p>
+        Highlight the folder in the tree view, and its absolute path is shown in the "Directory" field. <br />
+        <strong>NOTE</strong>: the default test directory will be highlighted at first.
+    </p>
+    <br />
+    <p>
+        Click the <b>OK</b> button to implement the action, or click the <b>Cancel</b> button to cancel.
+    </p>
+<!-- Configure Data -->
+    <h3><a name="3.2">Configure Data</a></h3>
+    <h4></h4>
+    <p>
+        SILICA perform the judge task according to the data configuration of the contest. <br />
+        A contest consists of several problems, and a problem consists of several testcases, as is shown in the tree view.
+        In the configuration procedure, you should configure both problems and testcases.
+    </p>
+    <img src="img/Mainpage_Problems.png" align="middle" height="480" width="600"/>
+    <h4>The Dropdown List</h4>
+    <p>
+        SILICA provides a dropdown list, which simplifies the configuration efficiently.
+    </p>
+    <img src="img/Dropdown.png" border="1" />
+    <p>
+        The dropdown list will pop up when you click one of those input boxes,
+        and the items in the list will be sorted descending in correlation with the input.
+    </p>
+    <!--
+    TODO
+    <p>
+        You can use the <b>UP</b> and <b>DOWN</b> arrow keys to navigate within then
+        items in the list. The selected item will be highlighted.
+    <p>
+    <p>
+        When you press <b>ENTER</b>, the content in the inputbox will be the item you
+        selected, and then hides the dropdown list.
+    </p>
+    <p>
+        <strong>NOTE</strong>: if you click the list, the dropdown list will hide
+        without changing the content of the inputbox. This will be improved in the
+        following releases.
+    </p>
+    -->
+    <h4>Configure Problems</h4>
+    <p>
+        You can click <b>Add a Problem</b> in the pop-up menu, or hit <b>Ctrl+Ins</b> to add a problem.
+        You can click <b>Delete</b> in the pop-up menu, or hit <b>Del</b> to delete the highlighted problem.
+    </p>
+    <p>
+        When a problem entry in the tree view is selected, its configuration is shown in the <b>Detail</b> panel.
+    </p>
+    <img src="img/PDetail.png" border="1" />
+    <p>
+        The <b>meanings</b> are listed as follows:
+    </p>
+    <dl>
+        <dt>Problem Title</dt>
+        <dd>
+            The title of the problem. <br />
+            <strong>NOTE</strong>: this should not be left blank.
+        </dd>
+
+        <dt>Source File</dt>
+        <dd>
+            The filename of the submissions, without extension. <br />
+            In the compilation procedure, SILICA will try to find the submission $(source)$(ext), where $(source) is the text filled in this section, and $(ext) is the extension (with leading dot) of a compiler. <br />
+            <strong>NOTE</strong>: this should not be left blank.
+        </dd>
+
+        <dt>Input File</dt>
+        <dd>
+            The name of the input file for the problem. This is usually given in the problem description.
+        </dd>
+
+        <dt>Output File</dt>
+        <dd>
+            The name of the output file for the problem. This is usually given in the problem description.
+        </dd>
+
+        <dt>Compare Method</dt>
+        <dd>
+            How to compare the competitor's outputs with the standard ones. There are three methods available: <br />
+            <dl>
+                <dt>byte by byte</dt>
+                <dd>
+                    Two files are considered identical if all bytes are exactly the same.
+                </dd>
+
+                <dt>ignore spare whitespaces</dt>
+                <dd>
+                    Whitespaces (space, tab and CR/LF) are out of consideration when comparing.
+                </dd>
+
+                <dt>use custom checker</dt>
+                <dd>
+                    User's output will be judged and scored by an external checker.
+                </dd>
+            </dl>
+        </dd>
+
+        <dt>Custom Checker</dt>
+        <dd>
+            The relative path of the custom checker. This is enabled only if <b>Compare Method</b> is set to <b>use custom checker</b>. <br />
+            <strong>NOTE</strong>: make sure you have the permission to run the checker.
+        </dd>
+
+        <dt>Additional File</dt>
+        <dd>
+            The relative path of the additional file for this problem. Leave blank if none.
+        </dd>
+    </dl>
+    <h4>Configure Testcases</h4>
+    <p>
+        You can click <b>Add a Testcase</b> in the pop-up menu, or hit <b>Ins</b> to add a testcase to the highlighted problem.
+        You can click <b>Delete</b> in the pop-up menu, or hit <b>Del</b> to delete the highlighted testcase.
+        You can click <b>Delete Other Testcases</b> in the pop-up menu, or hit <b>Shift+ Del</b> to delete testcases other than the highlighted one.
+    </p>
+    <p>
+        When a testcase entry in the tree view is selected, its configuration is shown in the <b>Detail</b> panel.
+    </p>
+    <img src="img/TDetail.png" border="1" />
+    <p>
+        The <b>meanings</b> are listed as follows:
+    </p>
+    <dl>
+        <dt>Input File</dt>
+        <dd>
+            The relative path of the standard input file for this testcase. You can choose one in the dropdown list.
+        </dd>
+
+        <dt>Output File</dt>
+        <dd>
+            The relative path of the standard output file for this testcase. You can choose one in the dropdown list.
+        </dd>
+
+        <dt>Full Score</dt>
+        <dd>
+            This integer is the full score for this testcase.
+        </dd>
+
+        <dt>Time Limit</dt>
+        <dd>
+            This integer is the time limit for this testcase (in seconds).
+        </dd>
+
+        <dt>Memory Limit</dt>
+        <dd>
+            This integer is the memory limit for this testcase (in kB).
+        </dd>
+    </dl>
+    <p>
+        <strong>HINT</strong>: after creating the first testcase, you can click <b>Add Other Testcases</b> in the pop-up menu, or hit <b>Shift+Ins</b> to add more testcases. SILICA will try to analyse the paths of the input and output files of the first testcase, try to find more files of the same pattern and create testcases using them.
+    </p>
+<!-- Judge Contestants -->
+    <h3><a name="3.3">Judge Contestants</a></h3>
+    <p>
+        Each contestant should create a folder named after his name under the subdirectory "src" relative to the contest directory, in which his submissions are stored. <br />
+        In the "Contestants" page, a list shows all the competitors and related information such as rank and score. <br />
+    </p>
+    <img src="img/Mainpage_Contestants.png" align="middle" height="480" width="600"/>
+    <p>
+        You can click a column header to sort contestants by that column.
+        You can click <b>Rename</b> in the pop-up menu, or hit <b>F2</b> to change the name of the highlighted competitor.
+        You can click <b>Delete</b> in the pop-up menu, or hit <b>delete</b> to delete all the submissions of the highlighted competitor.
+        You can click <b>View Source</b> in the pop-up menu to open the directory where the highlighted competitor's sources are located, using the file manager.
+    </p>
+    <p>
+        Having configured the data, you can click the <b>Test All</b> button to judge all the contestants, or click <b>Test Selected</b> button to judge those highlighted.
+    </p>
+    <p>
+        The test form will pop up when the judge task is started, in which the status is updated dynamically.
+    </p>
+    <img src="img/TestForm.png" width="500" height="400" />
+    <p>
+        You can click the <b>Pause</b> button to suspend judging.
+        You can click the <b>Abort</b> button to terminate judging. <br />
+        <strong>WARNING</strong>: it is very dangerous to terminate the judging thread, and may lead to unexpected consequences.
+    </p>
+<!-- View Result -->
+    <h3><a name="3.4">View Contestant's Result</a></h3>
+    <p>
+        You can click <b>View Result</b> in the pop-up menu, or perform a double-click to see the test result of the highlighted competitor.
+    </p>
+    <img src="img/ResultForm.png" width="600" height="360" />
+    <p>
+        The list on the left side provides an overview of the results.
+        When an item is highlighted, its detail will be shown in the list on the right side.
+    </p>
+    <p>
+        You can click the <b>Rejudge Selected</b> button to judge the checked problems.
+        You can click the <b>Rejudge All</b> button to judge all the problems.
+    </p>
+<!-- Export Contest Result -->
+    <h3><a name="3.5">Export Contest Result</a></h3>
+    <p>
+
+        SILICA is able to export the result of the current contest to text files.
+    <p>
+    <p>
+        To make a report, click "Control"-&gt;"Export Result" or hit "Ctrl+E" to
+        open the "Export" dialog, which may seem like this:
+    </p>
+    <img src="img/Export.png"/>
+    <p>
+        You can edit the absolute path of the report in the "Save As" field.
+        Click the <b>Export</b> button to export the results of highlighted contestants, or click the <b>Cancel</b> button to abort. <br />
+        The results can be exported in two ways. <b>Simple</b> and <b>Detailed</b>.
+    </p>
+    <dl>
+
+        <dt>Simple</dt>
+        <dd>
+            Each line demonstrates an overview of the scores a contestant achieved.
+        </dd>
+        <img src="img/Result_Simple.png" border="1" align="middle"/>
+
+
+        <dt>Detailed</dt>
+        <dd>
+            Each line demonstrates a detailed description of the performance of a contestant. The meanings of the symbols are listed at the end of the report.
+        </dd>
+        <img src="img/Result_Detailed.png" border="1" aligh="middle" />
+    </dl>
+<!-- Package a Contest -->
+    <h3><a name="3.6">Package a Contest</a></h3>
+    <p>
+        SILICA is able to package the contest into a tarball.
+    </p>
+    <img src="img/Package.png" align="middle" />
+    <p>
+        Check "With sources & results" to package the "src" folder.
+        Check "With dataconf.xml" to package the data configuration. <br />
+
+        Click <b>OK</b> to package the contest, or click <b>Cancel</b> to abort.
+    </p>
+
+<!-- Close a Contest -->
+    <h3><a name="3.7">Close a Contest</a></h3>
+    <p>
+        Click "File"-&gt;"Close" in the main menu, or hit "Ctrl+W" to close the contest.
+    </p>
+<!-- Navigation -->
+    <hr />
+    <a href="index.html">Top</a>&nbsp;&nbsp;
+    <a href="preparation.html">Previous</a>:Prepare for Contests&nbsp;&nbsp;
+    <a href="known_issues.html">Next</a>:Known Issues&nbsp;&nbsp;
+
+</body>
+</html>

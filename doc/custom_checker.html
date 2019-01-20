@@ -1,0 +1,207 @@
+<html>
+<head>
+    <title>SILICA Documentation - Appendix</title>
+</head>
+<body>
+    <h1>Appendix</h1>
+    <hr />
+<!-- Navigation -->
+    <a href="index.html">Top</a>&nbsp;&nbsp;
+    <a href="contact_us.html">Previous</a>:Contact Us&nbsp;&nbsp;
+    <a>Next</a>:None&nbsp;&nbsp;
+    <hr />
+
+<h3><a name="a.1">a. How to Use Custom Checker</a></h3>
+<p>
+    You can use an external custom checker to judge and score (see <a href="start_contest.html#3.2">Configure Data</a> for details). <br />
+    However, you should write and compile the checker using the library <b>libcheck</b> offered by SILICA. The source files are stored in <strong>/usr/share/silica/lib/</strong>. <br />
+    <strong>NOTE</strong>: before compiling the source, make sure there is an copy of the library in the same directory where the source is.
+</p>
+<p>
+    The <i>Pascal</i> version of the library is <b>libcheck.pas</b>.
+</p>
+<code><pre>unit libcheck;
+{
+argv[1]:StdInput
+argv[2]:StdOutput
+argv[3]:UsrOutput
+argv[4]:FullScore
+}
+
+interface
+var
+    //standard input file for this testcase
+    StdInput:Text;
+    //standard output file for this testcase
+    StdOutput:Text;
+    //competitor's output file for this testcase
+    UsrOutput:Text;
+    //full score for this testcase
+    FullScore:Double;
+
+    //give score
+    procedure Score(AScore:Double);
+    //finish the judging task
+    procedure Finish();
+    //prepare for the judging task
+    procedure Prepare();
+
+implementation
+
+procedure Score(AScore:Double);
+var
+  f:Text;
+begin
+  Assign(f,'score.txt');
+  Rewrite(f);
+  WriteLN(f,AScore:0:4);
+  Close(f);
+end;
+
+procedure Prepare();
+begin
+  Assign(StdInput,ParamStr(1));
+  Reset(StdInput);
+
+  Assign(StdOutput,ParamStr(2));
+  Reset(StdOutput);
+
+  Assign(UsrOutput,ParamStr(3));
+  Reset(UsrOutput);
+
+  Val(ParamStr(4),FullScore);
+end;
+
+procedure Finish();
+begin
+  Close(StdInput);
+  Close(StdOutput);
+  Close(UsrOutput);
+end;
+
+end.
+</pre></code>
+
+<p>
+    An template of the custom checker might be:
+</p>
+<code><pre>
+program custom_checker;
+uses
+  libcheck;
+var
+  i,j,k,l:Longint;
+begin
+  Prepare();
+
+  {
+    read data from StdInput, StdOutput and/or UsrOutput,
+    finish the judge task and then give score. For example,
+
+  read(StdInput,i,j);
+  read(StdOutput,k);
+  read(UsrOutput,l);
+
+  if (k=l) then
+    Score(FullScore)
+  else
+    Score(0);
+  }
+
+  Finish();
+end.
+</pre></code>
+<br />
+<p>
+    The <i>C/C++</i> version of the library is <b>libcheck.h</b>.
+</p>
+    <code><pre>
+#ifndef LIBCHECK_H_INCLUDED
+#define LIBCHECK_H_INCLUDED
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/*==== interface ====*/
+/*standard input file for this testcase*/
+FILE *StdOutput;
+/*standard output file for this testcase*/
+FILE *StdInput;
+/*competitor's output file for this testcase*/
+FILE **UsrOutput;
+/*full score for this testcase */
+double FullScore;
+
+/*give score*/
+void Score(double score);
+/*finish the judging task*/
+void Prepare(char *argv[]);
+/*prepare for the judging task*/
+void Finish();
+
+/*==== implementation ====*/
+void Score(double score)
+{
+    FILE *f=fopen("score.txt","w");
+    fprintf(f,"%.4lf\n", score);
+    fclose(f);
+}
+
+void Prepare(char *argv[])
+{
+    StdInput = fopen(argv[1],"r");
+    StdOutput = fopen(argv[2],"r");
+    UsrOutput = fopen(argv[3],"r");
+    FullScore = atof(argv[4]);
+}
+
+void Finish()
+{
+    fclose(StdOutput);
+    fclose(UsrOutput);
+    fclose(StdInput);
+}
+
+
+#endif /* LIBCHECK_H_INCLUDED */
+</pre></code>
+<p>
+    An template of the custom checker might be:
+</p>
+<code><pre>
+#include "libcheck.h"
+#include &lt;stdio.h&gt;
+int main(int argc, char *argv[])
+{
+        int a,b;
+        Prepare(argv);
+
+        /*
+        read data from StdInput, StdOutput and/or UsrOutput,
+        finish the judge task and then give score. For example,
+
+        fscanf(StdOutput,"%d",&a);
+        fscanf(UsrOutput,"%d",&b);
+        Score((a==b)?FullScore:0);
+        */
+        Finish();
+        return 0;
+}
+
+</pre></code>
+
+<h3><a name="a.2">b. How to Configure Data for Interactive Problems</a></h3>
+<p>
+    Some problems are classified <b>Interactive Problems</b>, which uses an external library to perform some task such as I/O. <br />
+    Under such circumstance, fill the relative path of the library into the <b>Additional File</b> field. For example,
+</p>
+<img src="img/Interactive.png" border="1" align="middle" />
+<!-- Navigation -->
+    <hr />
+    <a href="index.html">Top</a>&nbsp;&nbsp;
+    <a href="contact_us.html">Previous</a>:Contact Us&nbsp;&nbsp;
+    <a>Next</a>:None&nbsp;&nbsp;
+
+</body>
+
+</html>
